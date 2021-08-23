@@ -1,0 +1,54 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: grey;
+}
+/* Styling the main section */
+main{
+    margin: 5%;
+    margin-left: 30%;
+    width: 40%;
+    background-color: lightgrey;
+    border-radius: 5px;
+    box-shadow: 1px 1px 7px 2px;
+
+}
+/* Styling the text-box */
+#text-box{
+    margin: 13px;
+    margin-left: 15px;
+    border-bottom: 1px solid rgb(116, 114, 114);
+    position: relative;
+}
+#text-box form input{
+    border: none;
+    outline: none;
+    font-family: sans-serif;
+    position: relative;
+    height: 3rem;
+    width: 95%;
+    border-radius: 5px;
+    margin: 15px;
+    font-size: 1.5rem;
+    padding: 7px;
+
+}
+#submit-btn{
+    border: none;
+    background-color: white;
+    position: absolute;
+    font-size: 1.5rem;
+    background: none;
+    cursor: pointer;
+    right: 3%;
+    top: 28%;
+    display: none;
+}
+
+
+/* Styling the list container  */
+
+
+#display-container ul li{
+    list-style-type: none;
+}
