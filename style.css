@@ -9,15 +9,13 @@ main{
     margin-left: 30%;
     width: 40%;
     background-color: lightgrey;
-    border-radius: 5px;
+    border-radius: 8px;
     box-shadow: 1px 1px 7px 2px;
+    min-height: 200px;
 
 }
 /* Styling the text-box */
 #text-box{
-    margin: 13px;
-    margin-left: 15px;
-    border-bottom: 1px solid rgb(116, 114, 114);
     position: relative;
 }
 #text-box form input{
@@ -28,7 +26,7 @@ main{
     height: 3rem;
     width: 95%;
     border-radius: 5px;
-    margin: 15px;
+    margin: 15px 15px 2px 15px;
     font-size: 1.5rem;
     padding: 7px;
 
@@ -41,14 +39,94 @@ main{
     background: none;
     cursor: pointer;
     right: 3%;
-    top: 28%;
+    top: 24%;
+}
+/* Styling the text-box-functions */
+#text-box-functions{
+    display: flex;
+    justify-content: space-between;
+    /* border-bottom: 1px solid rgb(116, 114, 114); */
+}
+#text-box-functions button{
+    background: none;
+    border: none;
+    color: grey;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+#text-box-functions button i{
+    font-size: 1rem;
+}
+
+/* Styling the list container  */
+#display-container{
+    width: 95%;
+    /* margin-left: 15px; */
+    max-height: 255px;
+    overflow: scroll;
+    margin-top: 5px;
+    border-top: 1px solid rgb(192, 192, 192);
+}
+#display-container::-webkit-scrollbar{
     display: none;
 }
 
-
-/* Styling the list container  */
-
-
 #display-container ul li{
     list-style-type: none;
+    
+}
+
+/* Styling the list */
+ul li{
+    display: grid;
+    grid-template-columns: 1fr 10fr 1fr;
+    font-size: 1.5rem;
+    padding: 3px 0px;
+}
+.complete-icon{
+    cursor: pointer;
+}
+.list-content span{
+    text-transform: lowercase;
+}
+.delete-list-item{
+    display: none;
+    cursor: pointer;
+}
+ul li:hover .delete-list-item{
+    display: flex;
+    
+}
+
+/* Styling the footer section*/
+#footer-section{
+    width: 95%;
+    position: relative;
+    margin-left: 15px;
+    margin-top: 5px;
+    border-top: 1px solid rgb(192, 192, 192);
+    height: 30px;
+    padding: 10px 5px 0px 5px;
+}
+#flex-box{
+    display: flex;
+    /* justify-content: space-between; */
+}
+#number-of-tasks{
+    color: grey;
+    font-family: sans-serif;
+}
+#menu-tabs{
+    position: absolute;
+    right: 0;
+    display: grid;
+    width: 38%;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.menu-function{
+    color: grey;
+    font-family: sans-serif;
+    margin-left: 10px;
 }
