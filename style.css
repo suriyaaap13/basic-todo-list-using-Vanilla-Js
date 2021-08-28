@@ -65,6 +65,7 @@ main{
     width: 95%;
     /* margin-left: 15px; */
     max-height: 255px;
+    min-height: 200px;
     overflow: scroll;
     margin-top: 5px;
     border-top: 1px solid rgb(192, 192, 192);
@@ -75,21 +76,20 @@ main{
 
 #display-container ul li{
     list-style-type: none;
-    
+    margin: 7px 0px;
+    font-family: sans-serif;
+    font-size: 1.7rem;
+    padding: 1rem 0;
 }
 
 /* Styling the list */
 ul li{
     display: grid;
     grid-template-columns: 1fr 10fr 1fr;
-    font-size: 1.5rem;
     padding: 3px 0px;
 }
 .complete-icon{
     cursor: pointer;
-}
-.list-content span{
-    text-transform: lowercase;
 }
 .delete-list-item{
     display: none;
@@ -99,6 +99,11 @@ ul li:hover .delete-list-item{
     display: flex;
     
 }
+/* Styling the class checked (When the task is done) */
+.checked{
+    text-decoration: line-through;
+}
+
 
 /* Styling the footer section*/
 #footer-section{
