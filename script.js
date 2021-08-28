@@ -85,7 +85,18 @@ document.getElementById('submit-btn').addEventListener('click',function(e){
                 // console.log(i.parentNode);
                 let div = i.parentNode.getElementsByTagName('div');
                 // console.log(div);
+                let icon = i.childNodes
+                // toggling the circle icon to check circle
                 div[1].classList.toggle('checked');
+                if(icon[1].classList.contains('fa-circle')){
+                    icon[1].classList.remove('fa-circle');
+                    icon[1].classList.add('fa-check-circle');
+                }else{
+                    icon[1].classList.remove('fa-check-circle');
+                    icon[1].classList.add('fa-circle');
+                }
+
+
             },false));
         }
     }
@@ -110,11 +121,18 @@ for(let i=0;i<close.length;i++){
 var complete = document.getElementsByClassName('complete-icon');
 for(let i of complete){
     if(i.addEventListener('click',function(){
-        // console.log('I am in the complete');
-        // console.log(i.parentNode);
         let div = i.parentNode.getElementsByTagName('div');
-        // console.log(div);
         div[1].classList.toggle('checked');
+        let icon = i.childNodes
+        // toggling the circle icon to check circle
+        if(icon[1].classList.contains('fa-circle')){
+            icon[1].classList.remove('fa-circle');
+            icon[1].classList.add('fa-check-circle');
+        }else{
+            icon[1].classList.remove('fa-check-circle');
+            icon[1].classList.add('fa-circle');
+        }
+        
     }));
 }
 
@@ -124,19 +142,27 @@ document.getElementById('complete-all-tasks').addEventListener('click',function(
     for(let i of complete){
         let div = i.parentNode.getElementsByTagName('div');
         div[1].classList.add('checked');
+        let icon = i.childNodes
+        // changing the circle icon to check circle
+        if(icon[1].classList.contains('fa-circle')){
+            icon[1].classList.remove('fa-circle');
+            icon[1].classList.add('fa-check-circle');
+        }
+        
     }
 
 });
 
 // clear all tasks function
-document.getElementById('clear-completed-task').addEventListener('click',function(){
-    var close = document.getElementsByClassName('delete-list-item');
-    for(let i of close){
-        console.log(close.length, i);
-        let listItem = i.parentNode;
-        //removing the list item from the unordered list
-        listItem.parentNode.removeChild(listItem);
-    }
+// document.getElementById('clear-completed-task').addEventListener('click',function(){
+//     var close = document.getElementsByClassName('delete-list-item');
+//     for(let i of close){
+//         console.log(close.length, i);
+//         let listItem = i.parentNode;
+//         //removing the list item from the unordered list
+//         listItem.parentNode.removeChild(listItem);
+//     }
 
-});
+// });
+
 
