@@ -1,17 +1,40 @@
-//collect the input of the user and appending it in the list
-console.log('Iam in');
+// variable to keep track of the number of tasks
+let number_of_tasks = 0;
+TasksLeft();
+// function to update the number of tasks
+function TasksLeft(){
+    let tasks = document.getElementById('number-of-tasks');
+    
+    tasks.innerText = number_of_tasks+" tasks left";
+}
 
+
+// function to clear all the completed tasks
+document.getElementById('clear-completed-task').onclick = function(){
+    let listItems = document.getElementById('list').childNodes;
+    // taking all the list items from unordered list
+    for(let i=3;i<listItems.length;i++){
+        let div = listItems[i].childNodes;
+        console.log(div);
+        if(div[1].classList.contains('checked')){
+            listItems[i].style.display = "none";
+        }
+    }
+}
+
+//collect the input of the user and appending it in the list
 document.getElementById('submit-btn').addEventListener('click',function(e){
     e.preventDefault();
     let input = document.getElementById('input-box').value;
     if(input===""){
+        // not allowing the user to submit empty string
         alert('You should write something!');
         return;
     }else if(input.length>=20){
+        // not allowing the user to submit a long string
         alert('Your text is very long!!');
     }else{
         let list = document.getElementById('list');
-        // console.log(list);
         //creating the list item
         let li = document.createElement('li');
         //creating the div to put the input data inside it
@@ -44,16 +67,23 @@ document.getElementById('submit-btn').addEventListener('click',function(e){
         list.appendChild(li);
         //initializing the value of the input box back to null
         document.getElementById('input-box').value="";
+        number_of_tasks++;
+        TasksLeft();
+        
         //adding event Listener to every delete button in every list item
         var close = document.getElementsByClassName('delete-list-item');
-        console.log(close);
         for(let i=0;i<close.length;i++){
-            close[i].onclick = function(){
-                console.log(close.length, i);           
-                console.log(close[i]);
-                console.log(close[i].parentNode);   
+            close[i].onclick = function(){  
                 let LI = close[i].parentNode;
+                //setting the display to none
                 LI.style.display = "none";
+
+                // updating the number of tasks only if it is not completed
+                let div = LI.childNodes;
+                if(div[1].classList.contains('checked')==false){
+                    number_of_tasks--;
+                    TasksLeft();
+                }
                 
             }
         }
@@ -76,6 +106,8 @@ document.getElementById('submit-btn').addEventListener('click',function(e){
                     icon[0].classList.remove('fa-check-circle');
                     icon[0].classList.add('fa-circle');
                 }
+                number_of_tasks--;
+                TasksLeft();
             }
         }
 
@@ -85,20 +117,6 @@ document.getElementById('submit-btn').addEventListener('click',function(e){
     
 
 });
-
-
-//removing the list item from the unordered list
-
-//you have to comment this in the future
-var close = document.getElementsByClassName('delete-list-item');
-for(let i=0;i<close.length;i++){
-    if(close[i].addEventListener('click',function(){
-        let listItem = close[i].parentNode;
-        console.log(listItem.parentNode);
-        listItem.parentNode.removeChild(listItem);
-    }));
-}
-
 
 // complete all task function
 document.getElementById('complete-all-tasks').addEventListener('click',function(){
@@ -112,9 +130,8 @@ document.getElementById('complete-all-tasks').addEventListener('click',function(
             icon[0].classList.remove('fa-circle');
             icon[0].classList.add('fa-check-circle');
         }
-        
+        number_of_tasks = 0;
+        TasksLeft();
     }
 
 });
-
-
