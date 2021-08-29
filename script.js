@@ -1,25 +1,3 @@
-// console.log('entered js');
-// var inputBox = document.getElementById("input-box");
-// var btn = document.getElementById('submit-btn');
-
-
-// inputBox.addEventListener('keydown',function(){
-//     console.log('I am in');
-//     var text = inputBox.value;
-//     console.log(text);
-//     console.log(text.length);
-//     if(text.length==0){
-//         btn.style.display = "none";
-//         return;
-//     }
-//     if(text.length>0){
-//         console.log('show btn');
-//         btn.style.display = "flex";
-//         return;
-//     }
-// })
-
-
 //collect the input of the user and appending it in the list
 console.log('Iam in');
 
@@ -33,7 +11,7 @@ document.getElementById('submit-btn').addEventListener('click',function(e){
         alert('Your text is very long!!');
     }else{
         let list = document.getElementById('list');
-        console.log(list);
+        // console.log(list);
         //creating the list item
         let li = document.createElement('li');
         //creating the div to put the input data inside it
@@ -68,37 +46,41 @@ document.getElementById('submit-btn').addEventListener('click',function(e){
         document.getElementById('input-box').value="";
         //adding event Listener to every delete button in every list item
         var close = document.getElementsByClassName('delete-list-item');
+        console.log(close);
         for(let i=0;i<close.length;i++){
-            if(close[i].addEventListener('click',function(){
-                let listItem = close[i].parentNode;
-                //removing the list item from the unordered list
-                listItem.parentNode.removeChild(listItem);
-            }));
+            close[i].onclick = function(){
+                console.log(close.length, i);           
+                console.log(close[i]);
+                console.log(close[i].parentNode);   
+                let LI = close[i].parentNode;
+                LI.style.display = "none";
+                
+            }
         }
+        
 
 
         // adding event listener for complete task
         var complete = document.getElementsByClassName('complete-icon');
-        for(let i of complete){
-            if(i.addEventListener('click',function(){
-                // console.log('I am in the complete');
-                // console.log(i.parentNode);
-                let div = i.parentNode.getElementsByTagName('div');
-                // console.log(div);
-                let icon = i.childNodes
-                // toggling the circle icon to check circle
+        for(let i=0;i<complete.length;i++){
+            complete[i].onclick = function(){
+                let div = complete[i].parentNode.getElementsByTagName('div');
+                //toggling the checked class
                 div[1].classList.toggle('checked');
-                if(icon[1].classList.contains('fa-circle')){
-                    icon[1].classList.remove('fa-circle');
-                    icon[1].classList.add('fa-check-circle');
+                let icon = div[0].childNodes;
+                //toggling the circle with check circle icon and vice-versa
+                if(icon[0].classList.contains('fa-circle')){
+                    icon[0].classList.remove('fa-circle');
+                    icon[0].classList.add('fa-check-circle');
                 }else{
-                    icon[1].classList.remove('fa-check-circle');
-                    icon[1].classList.add('fa-circle');
+                    icon[0].classList.remove('fa-check-circle');
+                    icon[0].classList.add('fa-circle');
                 }
-
-
-            },false));
+            }
         }
+
+
+        
     }
     
 
@@ -117,24 +99,6 @@ for(let i=0;i<close.length;i++){
     }));
 }
 
-// adding functionality for the complete button
-var complete = document.getElementsByClassName('complete-icon');
-for(let i of complete){
-    if(i.addEventListener('click',function(){
-        let div = i.parentNode.getElementsByTagName('div');
-        div[1].classList.toggle('checked');
-        let icon = i.childNodes
-        // toggling the circle icon to check circle
-        if(icon[1].classList.contains('fa-circle')){
-            icon[1].classList.remove('fa-circle');
-            icon[1].classList.add('fa-check-circle');
-        }else{
-            icon[1].classList.remove('fa-check-circle');
-            icon[1].classList.add('fa-circle');
-        }
-        
-    }));
-}
 
 // complete all task function
 document.getElementById('complete-all-tasks').addEventListener('click',function(){
@@ -144,25 +108,13 @@ document.getElementById('complete-all-tasks').addEventListener('click',function(
         div[1].classList.add('checked');
         let icon = i.childNodes
         // changing the circle icon to check circle
-        if(icon[1].classList.contains('fa-circle')){
-            icon[1].classList.remove('fa-circle');
-            icon[1].classList.add('fa-check-circle');
+        if(icon[0].classList.contains('fa-circle')){
+            icon[0].classList.remove('fa-circle');
+            icon[0].classList.add('fa-check-circle');
         }
         
     }
 
 });
-
-// clear all tasks function
-// document.getElementById('clear-completed-task').addEventListener('click',function(){
-//     var close = document.getElementsByClassName('delete-list-item');
-//     for(let i of close){
-//         console.log(close.length, i);
-//         let listItem = i.parentNode;
-//         //removing the list item from the unordered list
-//         listItem.parentNode.removeChild(listItem);
-//     }
-
-// });
 
 
