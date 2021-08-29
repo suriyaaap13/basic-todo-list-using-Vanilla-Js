@@ -14,8 +14,9 @@ document.getElementById('clear-completed-task').onclick = function(){
     let listItems = document.getElementById('list').childNodes;
     // taking all the list items from unordered list
     for(let i=3;i<listItems.length;i++){
+        //taking the list items from the unordered List
         let div = listItems[i].childNodes;
-        console.log(div);
+        // if the list-content class has checked in it's class then change display to none.
         if(div[1].classList.contains('checked')){
             listItems[i].style.display = "none";
         }
@@ -102,12 +103,14 @@ document.getElementById('submit-btn').addEventListener('click',function(e){
                 if(icon[0].classList.contains('fa-circle')){
                     icon[0].classList.remove('fa-circle');
                     icon[0].classList.add('fa-check-circle');
+                    number_of_tasks--;
+                    TasksLeft();
                 }else{
                     icon[0].classList.remove('fa-check-circle');
                     icon[0].classList.add('fa-circle');
+                    number_of_tasks++;
+                    TasksLeft();
                 }
-                number_of_tasks--;
-                TasksLeft();
             }
         }
 
