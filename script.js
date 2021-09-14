@@ -1,10 +1,13 @@
+// getting the audio files
+let failed = document.getElementById("wrong-one");
+let success = document.getElementById("success");
+
 // variable to keep track of the number of tasks
 let number_of_tasks = 0;
 TasksLeft();
 // function to update the number of tasks
 function TasksLeft(){
     let tasks = document.getElementById('number-of-tasks');
-    
     tasks.innerText = number_of_tasks+" tasks left";
 }
 
@@ -29,11 +32,15 @@ document.getElementById('submit-btn').addEventListener('click',function(e){
     let input = document.getElementById('input-box').value;
     if(input===""){
         // not allowing the user to submit empty string
-        alert('You should write something!');
+        failed.play();
+        setTimeout(function(){alert('You should write something!');},50);
+        
         return;
     }else if(input.length>=20){
         // not allowing the user to submit a long string
-        alert('Your text is very long!!');
+        failed.play();
+        setTimeout(function(){alert('Your text is very long!!');},50);
+        document.getElementById('input-box').value="";
     }else{
         let list = document.getElementById('list');
         //creating the list item
@@ -101,6 +108,8 @@ document.getElementById('submit-btn').addEventListener('click',function(e){
                 let icon = div[0].childNodes;
                 //toggling the circle with check circle icon and vice-versa
                 if(icon[0].classList.contains('fa-circle')){
+                    success.play();
+                    console.log('successful play of success music');
                     icon[0].classList.remove('fa-circle');
                     icon[0].classList.add('fa-check-circle');
                     number_of_tasks--;
@@ -130,6 +139,7 @@ document.getElementById('complete-all-tasks').addEventListener('click',function(
         let icon = i.childNodes
         // changing the circle icon to check circle
         if(icon[0].classList.contains('fa-circle')){
+            success.play();
             icon[0].classList.remove('fa-circle');
             icon[0].classList.add('fa-check-circle');
         }
